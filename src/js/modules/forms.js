@@ -1,6 +1,7 @@
 import checkNumInputs from './checkNumInputs';
 
 const forms = () => {
+    console.log(123);
     const form = document.querySelectorAll('form');
     const inputs = document.querySelectorAll('input');
     const phoneInputs = document.querySelectorAll('input[name="user_phone"]');
@@ -10,7 +11,7 @@ const forms = () => {
             item.value = item.value.replace(/\D/, '');
         });
     });
-
+    
     // checkNumInputs('input[name="user_phone"]');
 
     const message = {
@@ -41,8 +42,8 @@ const forms = () => {
             item.appendChild(statusMessage);
 
             const formData = new FormData(item);
+            console.log(formData);
 
-            
             postData('assets/server.php', formData)
                 .than(res => {
                     console.log(res);
