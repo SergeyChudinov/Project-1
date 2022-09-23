@@ -314,6 +314,8 @@ textarea:focus {
 
 /*Main*/
 .main {
+  margin: 0 auto;
+  max-width: 1920px;
   padding: 10rem 0;
   background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
 }
