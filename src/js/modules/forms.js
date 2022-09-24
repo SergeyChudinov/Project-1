@@ -24,9 +24,13 @@ const forms = () => {
         document.querySelector('.status').textContent = message.loading;
         let res = await fetch(url, {
             method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
             body: data
         });
-        return await res.text();
+        // return await res.text();
+        return await res.json();
     };
     const clearInputs = () => {
         inputs.forEach(item => {
@@ -43,20 +47,36 @@ const forms = () => {
 
             const formData = new FormData(item);
             console.log(formData);
+            console.log(12345);
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
+            console.log(json);
 
-            postData('assets/server.php', formData)
-                .than(res => {
-                    console.log(res);
+            postData('http://localhost:3000/requests', json)
+                .then(data => {
+                    console.log(data);
                     statusMessage.textContent = message.success;
-                })
-                .catch(() => statusMessage.textContent = message.failure)
-                .finally(() => {
-                    // form.reset();
+                }).catch(() => {
+                    statusMessage.textContent = message.failure;
+                }).finally(() => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
                     }, 5000);
-                });
+                })
+
+            // postData('assets/server.php', formData)
+            //     .than(res => {
+            //         console.log(res);
+            //         statusMessage.textContent = message.success;
+            //     })
+            //     .catch(() => statusMessage.textContent = message.failure)
+            //     .finally(() => {
+            //         // form.reset();
+            //         clearInputs();
+            //         setTimeout(() => {
+            //             statusMessage.remove();
+            //         }, 5000);
+            //     });
         });
     });
 };
