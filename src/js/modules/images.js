@@ -3,6 +3,8 @@ const images = () => {
     const workSection = document.querySelector('.works');
     const bigImage = document.createElement('img');
 
+    const scroll = calcScroll(); // добавил отсуп для скрола
+
     imgPopup.classList.add('popup');
     workSection.appendChild(imgPopup);
 
@@ -20,12 +22,28 @@ const images = () => {
             const path = target.parentNode.getAttribute('href');
             bigImage.src = path;
             document.body.style.overflow = 'hidden';
+            document.body.style.marginRight = `${scroll}px`; // добавил отсуп для скрола
         }
         if (target && target.matches('div.popup')) {
             imgPopup.style.display = 'none';
             document.body.style.overflow = '';
+            document.body.style.marginRight = `0px`;
         }
 
     })
 };
+function calcScroll() {  // добавил отсуп для скрола
+    let div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY ='scroll';
+    div.style.visibility = 'hidden';
+
+    document.body.appendChild(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+
+    return scrollWidth;
+}
+
 export default images;

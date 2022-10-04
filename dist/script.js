@@ -18686,6 +18686,8 @@ var images = function images() {
   var imgPopup = document.createElement('div');
   var workSection = document.querySelector('.works');
   var bigImage = document.createElement('img');
+  var scroll = calcScroll(); // добавил отсуп для скрола
+
   imgPopup.classList.add('popup');
   workSection.appendChild(imgPopup);
   imgPopup.style.justifyContent = 'center';
@@ -18701,14 +18703,29 @@ var images = function images() {
       var path = target.parentNode.getAttribute('href');
       bigImage.src = path;
       document.body.style.overflow = 'hidden';
+      document.body.style.marginRight = "".concat(scroll, "px"); // добавил отсуп для скрола
     }
 
     if (target && target.matches('div.popup')) {
       imgPopup.style.display = 'none';
       document.body.style.overflow = '';
+      document.body.style.marginRight = "0px";
     }
   });
 };
+
+function calcScroll() {
+  // добавил отсуп для скрола
+  var div = document.createElement('div');
+  div.style.width = '50px';
+  div.style.height = '50px';
+  div.style.overflowY = 'scroll';
+  div.style.visibility = 'hidden';
+  document.body.appendChild(div);
+  var scrollWidth = div.offsetWidth - div.clientWidth;
+  div.remove();
+  return scrollWidth;
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (images);
 
