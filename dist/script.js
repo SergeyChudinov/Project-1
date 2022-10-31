@@ -18707,6 +18707,7 @@ var images = function images() {
     }
 
     if (target && target.matches('div.popup')) {
+      // if (target && target.classList.contains('popup')) {
       imgPopup.style.display = 'none';
       document.body.style.overflow = '';
       document.body.style.marginRight = "0px";

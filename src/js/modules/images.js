@@ -25,6 +25,7 @@ const images = () => {
             document.body.style.marginRight = `${scroll}px`; // добавил отсуп для скрола
         }
         if (target && target.matches('div.popup')) {
+        // if (target && target.classList.contains('popup')) {
             imgPopup.style.display = 'none';
             document.body.style.overflow = '';
             document.body.style.marginRight = `0px`;
