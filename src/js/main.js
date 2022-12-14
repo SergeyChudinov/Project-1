@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     tabs('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
     tabs('.balcon_icons', '.balcon_icons_img', '.big_img img', 'do_image_more', 'inline-block')
     forms(modalState);
-    timer('.container1', '2022-10-12 22:00');
+    timer('.container1', '2023-03-12 22:00');
     images();
 });
 
